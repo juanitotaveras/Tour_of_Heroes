@@ -3,9 +3,8 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
-  selector: 'my-app',
+  selector: 'my-heroes',
   template: `
-  <h1>{{title}}</h1>
   <h2>My Heroes</h2>
   <ul class="heroes">
     <li *ngFor="let hero of heroes"
@@ -15,8 +14,12 @@ import { HeroService } from './hero.service';
     </span> {{hero.name}}
     </li>
   </ul>
-  <hero-detail [hero]="selectedHero">
-  </hero-detail>`,
+  <div *ngIf="selectedHero">
+    <h2>
+      {{selectedHero.name | uppercase}} is my hero
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>`,
   styles: [`
     .selected {
       background-color: #CFD8DC
@@ -62,10 +65,10 @@ import { HeroService } from './hero.service';
         margin-right: .8em;
         border-radius: 4px 0 0 4px;
       }`],
-    providers: [HeroService],
+    //providers: ,
 })
-export class AppComponent implements OnInit {
-  title = 'Tour of Heroes';
+export class HeroesComponent implements OnInit {
+
   heroes: Hero[];
   selectedHero: Hero;
 
