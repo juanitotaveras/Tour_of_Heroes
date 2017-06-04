@@ -16,6 +16,11 @@ var hero_service_1 = require("./hero.service");
 //import { RouterModule } from '@angular/router';
 var app_routing_module_1 = require("./app-routing.module");
 var dashboard_component_1 = require("./dashboard.component");
+var http_1 = require("@angular/http");
+var hero_search_component_1 = require("./hero-search.component");
+// imports for in-memory web api
+var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
+var in_memory_data_service_1 = require("./in-memory-data.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,8 +30,14 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
+            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
             app_routing_module_1.AppRoutingModule],
-        declarations: [app_component_1.AppComponent, hero_detail_component_1.HeroDetailComponent, heroes_component_1.HeroesComponent, dashboard_component_1.DashboardComponent],
+        declarations: [app_component_1.AppComponent,
+            hero_detail_component_1.HeroDetailComponent,
+            heroes_component_1.HeroesComponent,
+            dashboard_component_1.DashboardComponent,
+            hero_search_component_1.HeroSearchComponent],
         bootstrap: [app_component_1.AppComponent],
         providers: [hero_service_1.HeroService],
     })
